@@ -14,6 +14,7 @@
 <meta name="twitter:title" content="Yahchouch Camp">
 <meta name="twitter:description" content="Disconnect in the woods. Wooden tents, a stone village house, a cave room, waterfalls, and a bar with a view.">
 <meta name="twitter:image" content="https://yahchouch-camp-site.vercel.app/og-image.jpg">
+<link rel="preload" as="image" href="images/pool-1.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -274,6 +275,26 @@
   .ask.ghost{background:transparent;color:var(--ink);border:1px solid var(--rule);}
   .ask.ghost:hover{background:var(--parchment-2);color:var(--ink);}
   @media (max-width:640px){.info-grid{grid-template-columns:1fr;} .info ul.cols{columns:1;} .rows>div{flex-direction:column;gap:2px;} .rows b{text-align:left;}}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;}
+  .hero-photo{border-radius:12px;overflow:hidden;aspect-ratio:5/4;background:var(--forest-mid);box-shadow:0 22px 44px rgba(0,0,0,0.35);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  .highlights{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px;margin:40px 0 0;padding:20px 0 0;border-top:1px solid rgba(243,238,225,0.18);font-size:0.88rem;color:#D9CFB0;}
+  .highlights li::before{content:"";display:inline-block;width:5px;height:5px;margin-right:9px;vertical-align:middle;background:var(--gold);border-radius:50%;}
+  @media (max-width:760px){.hero-grid{grid-template-columns:1fr;gap:28px;} .hero-photo{aspect-ratio:4/3;} .highlights{margin-top:28px;}}
+  .faq{padding:16px 0 8px;max-width:780px;}
+  .faq details{border-top:1px solid var(--rule);}
+  .faq details:last-child{border-bottom:1px solid var(--rule);}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";color:var(--clay);font-size:1.4rem;line-height:1;flex:none;}
+  .faq details[open] summary::after{content:"\2013";}
+  .faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+  .faq p{margin:0 0 18px;color:var(--ink-soft);line-height:1.6;font-size:0.95rem;max-width:64ch;}
+  .fab{position:fixed;right:16px;bottom:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;display:inline-flex;align-items:center;gap:8px;background:#128C7E;color:#fff;text-decoration:none;font-weight:700;font-size:0.9rem;padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 8px 22px rgba(0,0,0,0.3);transition:transform .15s,background .15s;}
+  .fab svg{width:22px;height:22px;}
+  .fab:hover{background:#0e7367;transform:translateY(-2px);}
+  .fab:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+  @media (max-width:420px){.fab span{display:none;} .fab{padding:14px;}}
   /* ---------- LIGHTBOX ---------- */
   .lb{position:fixed;inset:0;z-index:100;background:rgba(10,16,12,0.94);display:flex;align-items:center;justify-content:center;touch-action:pan-y;}
   .lb[hidden]{display:none;}
@@ -336,7 +357,7 @@
   }
 
   footer{
-    padding:56px 24px 64px;
+    padding:56px 24px 100px;
     text-align:center;
     color:var(--ink-soft);
     font-size:0.85rem;
@@ -350,11 +371,14 @@
     margin-bottom:6px;
   }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What time are check-in and check-out?", "acceptedAnswer": {"@type": "Answer", "text": "Wooden tents: check-in 5:00–10:00 PM (latest 10:00 PM), check-out 4:00 PM the next day. Village Houses and Cave: check-in 2:00 PM, check-out 12:00 PM the next day."}}, {"@type": "Question", "name": "Can I bring my own food?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, but not into the pool area — outside food and drinks aren’t allowed there unless bought from our restaurant, which is open until 11:00 PM. There is no restaurant near the Village Houses, so bring food for your stay."}}, {"@type": "Question", "name": "Are pets allowed?", "acceptedAnswer": {"@type": "Answer", "text": "Pets are welcome at the campsite, but not on the hiking trail, which runs through a protected nature reserve."}}, {"@type": "Question", "name": "Can children use the pool?", "acceptedAnswer": {"@type": "Answer", "text": "No. The pool is for guests aged 18 and over only."}}, {"@type": "Question", "name": "Can I bring a speaker?", "acceptedAnswer": {"@type": "Answer", "text": "No speakers, please — we play music throughout the camp."}}, {"@type": "Question", "name": "What should I bring for sleeping?", "acceptedAnswer": {"@type": "Answer", "text": "The wooden tents have a bed with a mattress only, so bring your own bed cover, blanket and pillows. Towels are provided in the Cave; in the Village Houses bring your own towels, and any extra guests bring sleeping bags for the couches."}}, {"@type": "Question", "name": "How many people fit?", "acceptedAnswer": {"@type": "Answer", "text": "The wooden tents fit 3 (+$10 for the third person). The Village House for 2 is set up for two and fits up to four; the Village House for 4 is set up for four and fits up to six; the Cave fits up to four. Each extra guest in the houses and the Cave is +$10 per night."}}]}</script>
 </head>
 <body>
 
 <header class="hero">
   <div class="hero-inner">
+    <div class="hero-grid">
+    <div class="hero-copy">
     <div class="est">EST. 2018 · KESERWAN, LEBANON</div>
     <h1>Yahchouch Camp</h1>
     <p class="tag">Disconnect in the woods.</p>
@@ -364,7 +388,14 @@
       <a href="#do">Things to do</a>
       <a href="#eat">Food & pool</a>
       <a href="#visit">Plan your visit</a>
+      <a href="#faq">Questions</a>
     </nav>
+    </div>
+    <div class="hero-photo"><img src="images/pool-1.webp" width="900" height="690" alt="Aerial view of the pool terrace at Yahchouch Camp" fetchpriority="high" decoding="async"></div>
+    </div>
+    <ul class="highlights">
+      <li>Infinity pool</li><li>4 waterfalls &amp; a lake</li><li>Restaurant &amp; bar</li><li>Pine &amp; oak forest</li><li>Wooden tents</li>
+    </ul>
   </div>
 </header>
 
@@ -375,7 +406,7 @@
   <div class="item" id="regular-tents">
     <div class="media carousel" data-carousel tabindex="0" role="group" aria-roledescription="carousel" aria-label="Regular Tents photos">
       <div class="track">
-        <img src="images/regular-tents-1.webp" width="750" height="1000" alt="Regular tents at Yahchouch Camp, wooden A-frames among the trees" decoding="async" fetchpriority="high">
+        <img src="images/regular-tents-1.webp" width="750" height="1000" alt="Regular tents at Yahchouch Camp, wooden A-frames among the trees" decoding="async" loading="lazy">
         <img data-src="images/regular-tents-2.webp" width="450" height="1000" alt="A regular tent, numbered C1, tucked against the rock" decoding="async">
         <img data-src="images/regular-tents-3.webp" width="594" height="1000" alt="A regular tent on a raised deck at Yahchouch Camp" decoding="async">
         <img data-src="images/regular-tents-4.webp" width="1000" height="750" alt="Inside a regular tent at Yahchouch Camp" decoding="async">
@@ -651,6 +682,16 @@
       </ul>
     </section>
   </div>
+  <div id="faq" class="section-label">QUESTIONS</div>
+  <div class="faq">
+    <details><summary>What time are check-in and check-out?</summary><p>Wooden tents: check-in 5:00–10:00 PM (latest 10:00 PM), check-out 4:00 PM the next day. Village Houses and Cave: check-in 2:00 PM, check-out 12:00 PM the next day.</p></details>
+    <details><summary>Can I bring my own food?</summary><p>Yes, but not into the pool area — outside food and drinks aren’t allowed there unless bought from our restaurant, which is open until 11:00 PM. There is no restaurant near the Village Houses, so bring food for your stay.</p></details>
+    <details><summary>Are pets allowed?</summary><p>Pets are welcome at the campsite, but not on the hiking trail, which runs through a protected nature reserve.</p></details>
+    <details><summary>Can children use the pool?</summary><p>No. The pool is for guests aged 18 and over only.</p></details>
+    <details><summary>Can I bring a speaker?</summary><p>No speakers, please — we play music throughout the camp.</p></details>
+    <details><summary>What should I bring for sleeping?</summary><p>The wooden tents have a bed with a mattress only, so bring your own bed cover, blanket and pillows. Towels are provided in the Cave; in the Village Houses bring your own towels, and any extra guests bring sleeping bags for the couches.</p></details>
+    <details><summary>How many people fit?</summary><p>The wooden tents fit 3 (+$10 for the third person). The Village House for 2 is set up for two and fits up to four; the Village House for 4 is set up for four and fits up to six; the Cave fits up to four. Each extra guest in the houses and the Cave is +$10 per night.</p></details>
+  </div>
 </div>
 
 <footer>
@@ -658,6 +699,7 @@
   Keserwan, Lebanon · Est. 2018
 </footer>
 
+<a class="fab" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20a%20booking." target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg><span>Message us</span></a>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
   <button class="lb-close" type="button" aria-label="Close">&times;</button>
   <button class="lb-prev" type="button" aria-label="Previous photo">&#8249;</button>
