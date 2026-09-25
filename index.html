@@ -134,6 +134,7 @@
 
   /* ---------- SECTION LABELS ---------- */
   .section-label{
+    scroll-margin-top:64px;
     padding:48px 0 8px;
     font-family:'Karla',sans-serif;
     font-size:0.8rem;
@@ -145,7 +146,7 @@
 
   /* ---------- ITEM ROWS ---------- */
   .item{
-    scroll-margin-top:24px;
+    scroll-margin-top:64px;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:32px;
@@ -370,12 +371,104 @@
     color:var(--ink);
     margin-bottom:6px;
   }
+
+  /* ---------- STICKY NAV ---------- */
+  .sticky-nav{
+    position:fixed;top:0;left:0;right:0;z-index:40;
+    background:rgba(20,43,32,0.92);backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(243,238,225,0.12);
+    transform:translateY(-100%);transition:transform .25s ease;
+  }
+  .sticky-nav.show{transform:translateY(0);}
+  .sticky-nav-inner{
+    max-width:920px;margin:0 auto;padding:10px 24px;
+    display:flex;align-items:center;gap:20px;
+  }
+  .sticky-brand{
+    font-family:'Fraunces',serif;font-weight:600;color:#F3EEE1;
+    text-decoration:none;font-size:1rem;white-space:nowrap;
+  }
+  .sticky-links{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none;}
+  .sticky-links::-webkit-scrollbar{display:none;}
+  .sticky-links a{
+    color:#D9CFB0;text-decoration:none;font-size:0.82rem;
+    padding:6px 10px;border-radius:999px;white-space:nowrap;
+    font-family:'Karla',sans-serif;
+  }
+  .sticky-links a:hover,.sticky-links a.active{background:rgba(243,238,225,0.12);color:#F3EEE1;}
+  .sticky-cta{
+    display:inline-flex;align-items:center;gap:6px;background:var(--clay);color:#F3EEE1;
+    text-decoration:none;font-size:0.8rem;font-weight:600;padding:7px 12px;
+    border-radius:999px;white-space:nowrap;
+  }
+  @media (max-width:700px){.sticky-brand{display:none;}}
+
+  /* ---------- QUICK FACTS (hero) ---------- */
+  .quickfacts{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;
+  }
+  .qf{
+    display:flex;align-items:center;gap:8px;
+    background:rgba(243,238,225,0.07);border:1px solid rgba(243,238,225,0.16);
+    border-radius:10px;padding:9px 13px;font-size:0.82rem;color:#EDE7D6;
+  }
+  .qf svg{width:16px;height:16px;flex:none;stroke:var(--gold);opacity:0.95;}
+  .qf b{color:#F3EEE1;font-weight:700;}
+
+  /* ---------- OVERVIEW TABLE ---------- */
+  .overview{
+    padding:4px 0 8px;
+    display:grid;gap:10px;
+  }
+  .ov-row{
+    display:grid;
+    grid-template-columns:1.6fr 1.3fr 1fr 1fr auto;
+    gap:12px;align-items:center;
+    background:var(--card-bg);border:1px solid var(--rule);border-radius:8px;
+    padding:14px 16px;text-decoration:none;color:inherit;
+    transition:border-color .15s,transform .15s;
+  }
+  .ov-row:hover{border-color:var(--clay);transform:translateY(-1px);}
+  .ov-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;}
+  .ov-price{color:var(--clay);font-weight:700;font-size:0.94rem;}
+  .ov-label{display:none;font-size:0.68rem;letter-spacing:0.03em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px;}
+  .ov-cap,.ov-checkin{font-size:0.86rem;color:var(--ink-soft);}
+  .ov-arrow{color:var(--clay);font-size:1.2rem;justify-self:end;}
+  @media (max-width:700px){
+    .ov-row{grid-template-columns:1fr 1fr;grid-template-areas:"name price" "cap checkin" ; padding:14px;}
+    .ov-name{grid-area:name;} .ov-price{grid-area:price;text-align:right;}
+    .ov-cap{grid-area:cap;} .ov-checkin{grid-area:checkin;text-align:right;}
+    .ov-arrow{display:none;}
+    .ov-label{display:block;}
+  }
+  .goodtoknow{
+    display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;padding-top:16px;
+    border-top:1px solid rgba(243,238,225,0.14);
+  }
+  .goodtoknow span{
+    font-size:0.82rem;color:#D9CFB0;display:flex;align-items:center;gap:6px;
+  }
+  .goodtoknow span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex:none;}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What time are check-in and check-out?", "acceptedAnswer": {"@type": "Answer", "text": "Wooden tents: check-in 5:00–10:00 PM (latest 10:00 PM), check-out 4:00 PM the next day. Village Houses and Cave: check-in 2:00 PM, check-out 12:00 PM the next day."}}, {"@type": "Question", "name": "Can I bring my own food?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, but not into the pool area — outside food and drinks aren’t allowed there unless bought from our restaurant, which is open until 11:00 PM. There is no restaurant near the Village Houses, so bring food for your stay."}}, {"@type": "Question", "name": "Are pets allowed?", "acceptedAnswer": {"@type": "Answer", "text": "Pets are welcome at the campsite, but not on the hiking trail, which runs through a protected nature reserve."}}, {"@type": "Question", "name": "Can children use the pool?", "acceptedAnswer": {"@type": "Answer", "text": "No. The pool is for guests aged 18 and over only."}}, {"@type": "Question", "name": "Can I bring a speaker?", "acceptedAnswer": {"@type": "Answer", "text": "No speakers, please — we play music throughout the camp."}}, {"@type": "Question", "name": "What should I bring for sleeping?", "acceptedAnswer": {"@type": "Answer", "text": "The wooden tents have a bed with a mattress only, so bring your own bed cover, blanket and pillows. Towels are provided in the Cave; in the Village Houses bring your own towels, and any extra guests bring sleeping bags for the couches."}}, {"@type": "Question", "name": "How many people fit?", "acceptedAnswer": {"@type": "Answer", "text": "The wooden tents fit 3 (+$10 for the third person). The Village House for 2 is set up for two and fits up to four; the Village House for 4 is set up for four and fits up to six; the Cave fits up to four. Each extra guest in the houses and the Cave is +$10 per night."}}]}</script>
 </head>
 <body>
 
-<header class="hero">
+<nav class="sticky-nav" id="stickyNav" aria-label="Section navigation">
+  <div class="sticky-nav-inner">
+    <a class="sticky-brand" href="#top">Yahchouch Camp</a>
+    <div class="sticky-links">
+      <a href="#stay">Sleep</a>
+      <a href="#do">Do</a>
+      <a href="#eat">Eat &amp; pool</a>
+      <a href="#visit">Plan visit</a>
+      <a href="#faq">Questions</a>
+    </div>
+    <a class="sticky-cta" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20a%20booking." target="_blank" rel="noopener">Message us</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-grid">
     <div class="hero-copy">
@@ -383,6 +476,11 @@
     <h1>Yahchouch Camp</h1>
     <p class="tag">Disconnect in the woods.</p>
     <p class="hero-note">A pull-out through pine and oak above the valley — wooden tents, a stone village house, a cave room, waterfalls, and a bar with a view. Rates and activities below.</p>
+    <div class="quickfacts">
+      <span class="qf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Keserwan, Lebanon</span>
+      <span class="qf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>From <b>$20/night</b></span>
+      <span class="qf"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Book by WhatsApp</span>
+    </div>
     <nav class="jump">
       <a href="#stay">Where to sleep</a>
       <a href="#do">Things to do</a>
@@ -396,12 +494,56 @@
     <ul class="highlights">
       <li>Infinity pool</li><li>4 waterfalls &amp; a lake</li><li>Restaurant &amp; bar</li><li>Pine &amp; oak forest</li><li>Wooden tents</li>
     </ul>
+    <div class="goodtoknow">
+      <span>No speakers — music played throughout the camp</span>
+      <span>Pool is 18+ only</span>
+      <span>Pets welcome (not on the hike)</span>
+      <span>Restaurant open until 11:00 PM</span>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
 
   <div id="stay" class="section-label">WHERE TO SLEEP</div>
+
+  <div class="overview" aria-label="Compare all stay options">
+    <a class="ov-row" href="#regular-tents">
+      <span class="ov-name">Regular Tents</span>
+      <span class="ov-price">$20/night <span style="font-weight:400;color:var(--ink-soft);">for 2</span></span>
+      <span class="ov-cap"><span class="ov-label">Fits</span>Up to 3</span>
+      <span class="ov-checkin"><span class="ov-label">Check-in</span>5–10 PM</span>
+      <span class="ov-arrow">→</span>
+    </a>
+    <a class="ov-row" href="#flying-tents">
+      <span class="ov-name">Flying Tents</span>
+      <span class="ov-price">$25/night <span style="font-weight:400;color:var(--ink-soft);">for 2</span></span>
+      <span class="ov-cap"><span class="ov-label">Fits</span>Up to 3</span>
+      <span class="ov-checkin"><span class="ov-label">Check-in</span>5–10 PM</span>
+      <span class="ov-arrow">→</span>
+    </a>
+    <a class="ov-row" href="#village-house-4">
+      <span class="ov-name">Village House — 4 People</span>
+      <span class="ov-price">$100/night <span style="font-weight:400;color:var(--ink-soft);">for 4</span></span>
+      <span class="ov-cap"><span class="ov-label">Fits</span>Up to 6</span>
+      <span class="ov-checkin"><span class="ov-label">Check-in</span>2:00 PM</span>
+      <span class="ov-arrow">→</span>
+    </a>
+    <a class="ov-row" href="#village-house-2">
+      <span class="ov-name">Village House — 2 People</span>
+      <span class="ov-price">$80/night <span style="font-weight:400;color:var(--ink-soft);">for 2</span></span>
+      <span class="ov-cap"><span class="ov-label">Fits</span>Up to 4</span>
+      <span class="ov-checkin"><span class="ov-label">Check-in</span>2:00 PM</span>
+      <span class="ov-arrow">→</span>
+    </a>
+    <a class="ov-row" href="#cave">
+      <span class="ov-name">Cave — 2 People</span>
+      <span class="ov-price">$80/night <span style="font-weight:400;color:var(--ink-soft);">for 2</span></span>
+      <span class="ov-cap"><span class="ov-label">Fits</span>Up to 4</span>
+      <span class="ov-checkin"><span class="ov-label">Check-in</span>2:00 PM</span>
+      <span class="ov-arrow">→</span>
+    </a>
+  </div>
 
   <div class="item" id="regular-tents">
     <div class="media carousel" data-carousel tabindex="0" role="group" aria-roledescription="carousel" aria-label="Regular Tents photos">
@@ -421,8 +563,8 @@
       <h3>Regular Tents</h3>
       <div class="price">$20 per couple <small>fits up to 3 · +$10 for a third person</small></div>
       <p class="desc">Wooden A-frame tents tucked among the trees, close to the ground and shaded through the day.</p>
-      <p class="meta"><span><b>Check-in</b> 5:00–10:00 PM (latest 10 PM)</span><span><b>Check-out</b> 4:00 PM next day</span></p><details class="more"><summary>Included &amp; house rules</summary><div class="more-body"><p class="mh">Included</p><ul><li>Bed with a mattress</li><li>Free access to the picnic zone</li><li>Shared fridge for essentials</li></ul><p class="mh">Bring</p><ul><li>Your own bed cover, blanket and pillows</li></ul><p class="mh">Good to know</p><ul><li>Cabins are for sleeping only — no sitting around them</li><li>No speakers — music is played throughout the camp</li><li>Pets are welcome at the campsite (not on the hike)</li><li>Restaurant open until 11:00 PM</li></ul></div></details>
-      <div class="actions"><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Regular%20Tent.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/regular-tents" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
+      <p class="meta"><span><b>Check-in</b> 5:00–10:00 PM (latest 10 PM)</span><span><b>Check-out</b> 4:00 PM next day</span></p>
+      <div class="actions"><a class="ask ghost" href="/u/regular-tents">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Regular%20Tent.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/regular-tents" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
     </div>
   </div>
 
@@ -444,8 +586,8 @@
       <h3>Flying Tents</h3>
       <div class="price">$25 per couple <small>fits up to 3 · +$10 for a third person</small></div>
       <p class="desc">Raised A-frames on stilts with a small deck and canopy views — the same wooden build, lifted off the ground.</p>
-      <p class="meta"><span><b>Check-in</b> 5:00–10:00 PM (latest 10 PM)</span><span><b>Check-out</b> 4:00 PM next day</span></p><details class="more"><summary>Included &amp; house rules</summary><div class="more-body"><p class="mh">Included</p><ul><li>Bed with a mattress</li><li>Free access to the picnic zone</li><li>Shared fridge for essentials</li></ul><p class="mh">Bring</p><ul><li>Your own bed cover, blanket and pillows</li></ul><p class="mh">Good to know</p><ul><li>Cabins are for sleeping only — no sitting around them</li><li>No speakers — music is played throughout the camp</li><li>Pets are welcome at the campsite (not on the hike)</li><li>Restaurant open until 11:00 PM</li></ul></div></details>
-      <div class="actions"><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Flying%20Tent.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/flying-tents" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
+      <p class="meta"><span><b>Check-in</b> 5:00–10:00 PM (latest 10 PM)</span><span><b>Check-out</b> 4:00 PM next day</span></p>
+      <div class="actions"><a class="ask ghost" href="/u/flying-tents">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Flying%20Tent.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/flying-tents" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
     </div>
   </div>
 
@@ -475,8 +617,8 @@
       <h3>Village House — 4 People</h3>
       <div class="price">$100 per night <small>for 4 · +$10 per extra guest, up to 6 ($120 for 6)</small></div>
       <p class="desc">A stone house with a living area, private terrace, and pool access — set up for four and fits up to six, with the extra two on the couches.</p>
-      <p class="meta"><span><b>Check-in</b> 2:00 PM</span><span><b>Check-out</b> 12:00 PM next day</span></p><details class="more"><summary>Included &amp; house rules</summary><div class="more-body"><p class="mh">Included</p><ul><li>TV</li><li>Refrigerator</li><li>Gas stove</li><li>Basic kitchen essentials</li></ul><p class="mh">Bring</p><ul><li>Your own towels — not provided</li><li>Your own food — there is no restaurant nearby</li><li>Sleeping bags for the 2 extra guests (they sleep on the couches)</li></ul><p class="mh">Getting there</p><ul><li>Check-in takes place at our main site, then we guide you to the house — about 15 minutes by car</li></ul></div></details>
-      <div class="actions"><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Village%20House%20%284%20people%29.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/village-house-4" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
+      <p class="meta"><span><b>Check-in</b> 2:00 PM</span><span><b>Check-out</b> 12:00 PM next day</span></p>
+      <div class="actions"><a class="ask ghost" href="/u/village-house-4">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Village%20House%20%284%20people%29.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/village-house-4" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
     </div>
   </div>
 
@@ -503,8 +645,8 @@
       <h3>Village House — 2 People</h3>
       <div class="price">$80 per night <small>for 2 · +$10 per extra guest, up to 4</small></div>
       <p class="desc">A smaller stone house with its own private infinity-edge pool overlooking the valley — set up for two and fits up to four, with the extra two on the couches.</p>
-      <p class="meta"><span><b>Check-in</b> 2:00 PM</span><span><b>Check-out</b> 12:00 PM next day</span></p><details class="more"><summary>Included &amp; house rules</summary><div class="more-body"><p class="mh">Included</p><ul><li>TV</li><li>Refrigerator</li><li>Gas stove</li><li>Basic kitchen essentials</li></ul><p class="mh">Bring</p><ul><li>Your own towels — not provided</li><li>Your own food — there is no restaurant nearby</li><li>Sleeping bags for the 2 extra guests (they sleep on the couches)</li></ul><p class="mh">Getting there</p><ul><li>Check-in takes place at our main site, then we guide you to the house — about 15 minutes by car</li></ul></div></details>
-      <div class="actions"><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Village%20House%20%282%20people%29.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/village-house-2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
+      <p class="meta"><span><b>Check-in</b> 2:00 PM</span><span><b>Check-out</b> 12:00 PM next day</span></p>
+      <div class="actions"><a class="ask ghost" href="/u/village-house-2">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Village%20House%20%282%20people%29.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/village-house-2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
     </div>
   </div>
 
@@ -528,8 +670,8 @@
       <h3>Cave — 2 People</h3>
       <div class="price">$80 per night <small>for 2 · +$10 per extra guest, up to 4</small></div>
       <p class="desc">A stone-vaulted room built into the hillside, with a small kitchenette and its own outdoor sitting area.</p>
-      <p class="meta"><span><b>Check-in</b> 2:00 PM</span><span><b>Check-out</b> 12:00 PM next day</span></p><details class="more"><summary>Included &amp; house rules</summary><div class="more-body"><p class="mh">Included</p><ul><li>Free access to the public pool — 18+ only</li><li>Towels</li></ul><p class="mh">Good to know</p><ul><li>Up to 2 visitors are free — visitors pay $5 each to use the pool</li><li>You can bring your own food, but not into the pool area</li><li>No speakers — music is played throughout the camp</li></ul></div></details>
-      <div class="actions"><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Cave%20%282%20people%29.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/cave" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
+      <p class="meta"><span><b>Check-in</b> 2:00 PM</span><span><b>Check-out</b> 12:00 PM next day</span></p>
+      <div class="actions"><a class="ask ghost" href="/u/cave">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Cave%20%282%20people%29.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/cave" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
     </div>
   </div>
 
@@ -557,8 +699,8 @@
       <h3>Waterfalls Hiking</h3>
       <div class="price">500,000 LBP per person — extra charge</div>
       <p class="desc">A hike down through the protected nature reserve — 4 waterfalls, 1 lake and 2 tunnels along the way.</p>
-      <p class="meta"><span><b>On the trail</b> 4 waterfalls · 1 lake · 2 tunnels</span></p><details class="more"><summary>Trail rules</summary><div class="more-body"><p class="mh">Rules</p><ul><li>Located inside a protected nature reserve</li><li>No picnics, shisha or pets on the trail</li></ul></div></details>
-      <div class="actions"><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Waterfalls%20Hiking.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/waterfalls" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
+      <p class="meta"><span><b>On the trail</b> 4 waterfalls · 1 lake · 2 tunnels</span></p>
+      <div class="actions"><a class="ask ghost" href="/u/waterfalls">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Waterfalls%20Hiking.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/waterfalls" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
     </div>
   </div>
 
@@ -584,7 +726,7 @@
       <div class="price">À la carte</div>
       <p class="desc">Open-air seating over the valley, ordered dish by dish through the day and evening.</p>
       <p class="meta"><span><b>Open</b> until 11:00 PM</span></p>
-      <span class="actions"><a class="note" href="https://turbo.menu/YAHCHOUCHCAMP" target="_blank" rel="noopener" style="text-decoration:none;">View the menu ↗</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Restaurant%20%26%20Bar.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/restaurant" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></span>
+      <span class="actions"><a class="note" href="https://turbo.menu/YAHCHOUCHCAMP" target="_blank" rel="noopener" style="text-decoration:none;">View the menu ↗</a><a class="ask ghost" href="/u/restaurant">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Restaurant%20%26%20Bar.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/restaurant" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></span>
     </div>
   </div>
 
@@ -606,9 +748,9 @@
       <h3>Pool Entrance</h3>
       <div class="price">$5 per person — extra charge</div>
       <p class="desc">Access to the infinity pool overlooking the valley.</p>
-      <details class="more"><summary>Pool rules</summary><div class="more-body"><p class="mh">Rules</p><ul><li>18+ only — no one under 18</li><li>Outside food and drinks are not allowed, unless bought from our restaurant</li></ul></div></details>
+      
       <span class="note">Not allowed under 18</span>
-      <div class="actions"><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Pool%20Entrance.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/pool" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
+      <div class="actions"><a class="ask ghost" href="/u/pool">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Pool%20Entrance.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/pool" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
     </div>
   </div>
 
@@ -629,7 +771,7 @@
       <div class="price">$5 per person, per day</div>
       <p class="desc">Wooden tables set under the old olive trees, shaded through the afternoon.</p>
       <p class="meta"><span><b>Free</b> for guests staying in the wooden tents</span></p>
-      <div class="actions"><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Picnic%20Zone.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/picnic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
+      <div class="actions"><a class="ask ghost" href="/u/picnic">View full details</a><a class="ask" href="https://wa.me/96178888502?text=Hi%20Yahchouch%20Camp%21%20I%27d%20like%20to%20ask%20about%20the%20Picnic%20Zone.%0Ahttps%3A//yahchouch-camp-site.vercel.app/u/picnic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.12 1.02-2.41c.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.25.59.84 2.05.91 2.2.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.14.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z"/></svg>Ask about this</a></div>
     </div>
   </div>
 
@@ -716,6 +858,27 @@
   var lbCount = lb.querySelector('.lb-cap span');
   var lbBtns = lb.querySelectorAll('button');
   var cur = null, lbIdx = 0, opener = null;
+
+  // Sticky nav: show once the hero scrolls out of view; highlight the active section.
+  var stickyNav = document.getElementById('stickyNav');
+  var heroEl = document.querySelector('.hero');
+  if (stickyNav && heroEl && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      stickyNav.classList.toggle('show', !es[0].isIntersecting);
+    }, { rootMargin: '-40px 0px 0px 0px' }).observe(heroEl);
+  }
+  var navLinks = stickyNav ? Array.prototype.slice.call(stickyNav.querySelectorAll('.sticky-links a')) : [];
+  var navTargets = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if (navTargets.length && 'IntersectionObserver' in window) {
+    var secIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var href = '#' + en.target.id;
+        navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === href); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    navTargets.forEach(function(t){ secIo.observe(t); });
+  }
 
   document.querySelectorAll('[data-carousel]').forEach(function(el){
     var track = el.querySelector('.track');
